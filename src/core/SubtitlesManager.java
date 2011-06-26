@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -68,10 +69,21 @@ public class SubtitlesManager {
 		return dates;
 	}
 	
-	public List<Date> addOrSubTime(List<Date> times){
+	public List<Date> addOrSubTime(List<Date> times, Operations operator, int amount){
 		List<Date> newDate = new ArrayList<Date>();
+		Calendar calendar = Calendar.getInstance();
 		
-		
+		for (Date time : times) {
+			calendar.setTime(time);
+			
+			if (operator.equals(Operations.SUM)){
+				calendar.add(Calendar.SECOND, amount);
+			}else{
+				calendar.add(Calendar.SECOND, -amount);
+			}
+			
+			newDate.add(calendar.getTime());
+		}
 		
 		return newDate;
 	}
