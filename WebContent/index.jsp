@@ -10,9 +10,9 @@
 	<center>
 		<h1>SubTitles Manager</h1>
 <!--upload-locaweb.jsp  -->
-		<form action="upload-locaweb.jsp" method="post" ENCTYPE="multipart/form-data">
-			<input type="file" name="arquivo" id="arquivo" />
-		 	<input type="submit" value="Enviar" />
+		<form action="upload.do" enctype="multipart/form-data" method="POST">
+			<input type="file" name="file1" />
+			<input type="Submit" value="Upload File" /><br>
 		</form>
 	</center>
 
