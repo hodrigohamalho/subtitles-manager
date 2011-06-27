@@ -11,11 +11,13 @@ import java.util.List;
 
 import org.junit.Test;
 
+import br.com.jspace.core.SubtitlesManager;
+
 
 public class TestSubtitlesManager {
 
 	SubtitlesManager manager = new SubtitlesManager();
-	String path = "/Users/rodrigoramalho/Movies/Inception.1080p.BluRay.x264-REFiNED/refined-inception-1080p.srt";
+	String path = "src/test/resources/refined-inception-1080p.srt";
 	
 	@Test
 	public void readFile() throws Exception{

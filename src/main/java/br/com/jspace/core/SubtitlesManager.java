@@ -1,4 +1,4 @@
-package core;
+package br.com.jspace.core;
 
 import java.io.BufferedWriter;
 import java.io.File;
