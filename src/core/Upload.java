@@ -42,7 +42,7 @@ public class Upload extends HttpServlet {
 			List<Date> newDate = null;
 			List<String> finalDate = null;
 			
-			txt = subTitle.readFile("/Users/fabricioraphael/subtitle/tmplegenda.srt");
+//			txt = subTitle.readFile("/Users/fabricioraphael/subtitle/tmplegenda.srt");
 			
 //			times = subTitle.extractTimes(txt);
 			

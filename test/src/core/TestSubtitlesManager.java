@@ -6,8 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -20,14 +18,14 @@ public class TestSubtitlesManager {
 	String path = "/Users/rodrigoramalho/Movies/Inception.1080p.BluRay.x264-REFiNED/refined-inception-1080p.srt";
 	
 	@Test
-	public void readFile() throws IOException{
+	public void readFile() throws Exception{
 		String text = manager.readFile(path);
 		assertNotNull(text);
 		assertFalse(text.isEmpty());
 	}
 	
 	@Test
-	public void extractTime() throws IOException{
+	public void extractTime() throws Exception{
 		String text = manager.readFile(path);
 		List<String> times = manager.extractTimes(text);
 		assertNotNull(times);
@@ -38,7 +36,7 @@ public class TestSubtitlesManager {
 	}
 	
 	@Test
-	public void convertStringToTime() throws IOException, ParseException{
+	public void convertStringToTime() throws Exception{
 		String text = manager.readFile(path);
 		List<String> times = manager.extractTimes(text);
 		List<Date> datas = manager.convertStringToTime(times);
@@ -51,30 +49,28 @@ public class TestSubtitlesManager {
 		String text = manager.readFile(path);
 		List<String> times = manager.extractTimes(text);
 		List<Date> datas = manager.convertStringToTime(times);
-		
-		List<Date> newTimes = manager.addOrSubTime(datas, Operations.SUM, 10);
+
+		List<String> newTimes = manager.addOrSubTime(datas, 10);
 		assertFalse(newTimes.isEmpty());
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(0,0,0,0,0,11);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-		
-		assertEquals(dateFormat.format(calendar.getTime()), 
-				dateFormat.format(newTimes.get(0).getTime()));
+		assertEquals("00:00:11", newTimes.get(0));
+		assertEquals("02:28:27", newTimes.get(newTimes.size()-1));
 	}
-	
+
 	@Test
 	public void subTime() throws IOException, ParseException{
 		String text = manager.readFile(path);
 		List<String> times = manager.extractTimes(text);
 		List<Date> datas = manager.convertStringToTime(times);
-		
-		List<Date> newTimes = manager.addOrSubTime(datas, Operations.SUM, -1);
+
+		List<String> newTimes = manager.addOrSubTime(datas, -1);
 		assertFalse(newTimes.isEmpty());
-		Calendar calendar = Calendar.getInstance();
-		calendar.set(0,0,0,0,0,0);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-		
-		assertEquals(dateFormat.format(calendar.getTime()), 
-				dateFormat.format(newTimes.get(0).getTime()));
+		assertEquals("00:00:00", newTimes.get(0));
+		assertEquals("02:28:16", newTimes.get(newTimes.size()-1));
+	}
+	
+	@Test
+	public void convertFile() throws IOException, ParseException{
+		String fileName = manager.convertFile(path, 10);
+		assertEquals("refined-inception-1080p.srt", fileName);
 	}
 }
