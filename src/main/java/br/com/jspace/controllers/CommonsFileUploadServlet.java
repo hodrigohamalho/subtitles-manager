@@ -45,12 +45,10 @@ public class CommonsFileUploadServlet extends HttpServlet {
 
 	@SuppressWarnings("rawtypes")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SubtitlesManager subTitle = new SubtitlesManager();
 		DiskFileItemFactory  fileItemFactory = new DiskFileItemFactory ();
 		fileItemFactory.setSizeThreshold(1*1024*1024); //1 MB
 		fileItemFactory.setRepository(tmpDir);
-		String legend = "";
-		
+
 		ServletFileUpload uploadHandler = new ServletFileUpload(fileItemFactory);
 
 		try {
@@ -69,14 +67,5 @@ public class CommonsFileUploadServlet extends HttpServlet {
 		} catch(Exception ex) {
 			log("Err ",ex);
 		}
-		
-		try {
-			legend = subTitle.convertFile("/subtitle/legenda.srt", 2);
-			
-		} catch (ParseException e) {
-			System.out.println("Catch! =/");
-			e.printStackTrace();
-		}
-		request.getRequestDispatcher("/result.jsp").forward(request, response);
 	}
 }
