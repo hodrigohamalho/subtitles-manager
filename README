@@ -1,8 +1,0 @@
-This project aims to manage the timing of the subtitles of a movie.
-
-How it works?
-
-1. The user uploads the legenda.srt and indicates how long the caption is
-delayed or advanced.
-2. The system processes the file and adjust the subtitle timing.
-3. The system provides this new file to download.
