@@ -21,7 +21,7 @@ Setup project:
 This project use maven framework, so few steps is necessary to import in Eclipse IDE.
 
 1. Get the project 
-	git clone git@github.com:hodrigohamalho/subtitles-manager.git
+	``` git clone git@github.com:hodrigohamalho/subtitles-manager.git ```
 2. Execute maven tasks
 	mvn clean eclipse:clean eclipse:eclipse
 3. Now you can import to eclipse
