@@ -14,9 +14,9 @@ public class SubtitleManagerServlet extends CommonsFileUploadServlet{
 	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
 		// Faz o upload
 		super.doPost(request, response);
+		
 		
 		
 	}

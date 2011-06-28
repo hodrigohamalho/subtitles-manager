@@ -1,3 +1,5 @@
 $(document).ready(function(){
-	alert('s');
+	$('#segundos').spin({
+		imageBasePath: 'images/'
+	});
 });

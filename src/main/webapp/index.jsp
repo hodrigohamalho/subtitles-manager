@@ -5,18 +5,25 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Gerenciador de Legendas</title>
-	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" /> 
-	<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
-	<script type="text/javascript" src="/javascripts/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/stylesheets/style.css" />
+	<script type="text/javascript" src="<%=request.getContextPath() %>/javascripts/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/javascripts/jquery-spin.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/javascripts/index.js"></script>
 </head>
 <body>
 	<center>
 		<h1>Gerenciador de Legendas</h1>
 		
 		<form action="upload.do" enctype="multipart/form-data" method="POST">
-			Escolha a Legenda: <input type="file" name="legenda"  />
-			Segundos: <input type="text" name="segundos" />
-			<input type="Submit" value="Enviar Legenda" /><br>
+			<div id="upload">
+				Escolha a Legenda: <input type="file" name="legenda"  />
+			</div>
+			<div id="time">
+				Segundos: <input type="text" name="segundos" id="segundos" value="0"/>
+			</div>
+			<div id="submit">
+				<input type="Submit" value="Enviar Legenda" /><br>
+			</div>
 		</form>
 		
 	</center>
