@@ -1,9 +1,9 @@
 package br.com.jspace.core;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.RandomAccessFile;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,29 +16,27 @@ import java.util.regex.Pattern;
 
 public class SubtitlesManager {
 
-
-	public String convertFile(String path, int amount) throws IOException, ParseException{
+	public String convertFile(String path, Operations operator, int amount) throws IOException, ParseException{
 		String text = this.readFile(path);
-		List<String> timesString = extractTimes(text);
-		List<Date> times = convertStringToTime(timesString);
-		List<String> newTimes = addOrSubTime(times, amount);
-		
+		List<String> timesString = this.extractTimes(text);
+		List<Date> times = this.convertStringToTime(timesString);
+		List<String> newTimes = this.addOrSubTime(times, operator, amount);
+
 		for (int i=0; i < newTimes.size(); i ++) {
 			text = text.replace(timesString.get(i), newTimes.get(i).replace(":", "#k#"));
 		}
-		
+
 		text = text.replaceAll("#k#", ":");
-		
 		String fileName = path.substring(path.lastIndexOf(File.separator)+1);
-		BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-	    out.write(text);
-	    out.close();
-		
+		this.writeFile(fileName, text);
+//		BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
+//		out.write(text);
+//		out.close();
+
 		return fileName;
 	}
 
 	public String readFile(String path) throws IOException, ParseException {
-
 		StringBuilder text = new StringBuilder();
 		String line = "";
 		RandomAccessFile accessFile = new RandomAccessFile(new File(path), "rw");
@@ -52,11 +50,16 @@ public class SubtitlesManager {
 		return text.toString();
 	}
 
-	public void addText(String arq, String conteudo, boolean save) throws IOException{
-		FileWriter fw = new FileWriter(arq, save);
-
-		fw.write(conteudo);
-		fw.close();
+	public void writeFile(String fileName, String content) throws IOException{
+		FileOutputStream local;  
+		PrintStream contentFile;  
+		try{  
+			local = new FileOutputStream("/subtitle/" + fileName);
+			contentFile = new PrintStream(local);  
+			contentFile.print(content);  
+		}catch (Exception e){
+			System.err.println(e);  
+		} 
 	}
 
 
@@ -76,7 +79,7 @@ public class SubtitlesManager {
 		List<Date> dates = new ArrayList<Date>();
 
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-		
+
 		for (String time : times) {
 			dates.add(format.parse(time));
 		}
@@ -84,17 +87,20 @@ public class SubtitlesManager {
 		return dates;
 	}
 
-	public List<String> addOrSubTime(List<Date> times, int amount){
+	public List<String> addOrSubTime(List<Date> times,Operations operator, int amount){
 		List<String> newTime = new ArrayList<String>();
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-		
+
 		for (Date time : times) {
 			calendar.setTime(time);
-			calendar.add(Calendar.SECOND, amount);
+			if (operator.equals(Operations.SUM)){
+				calendar.add(Calendar.SECOND, amount);
+			}else{
+				calendar.add(Calendar.SECOND, -amount);
+			}
 			newTime.add(format.format(calendar.getTime()));
 		}
-		
 		return newTime;
 	}
 }
