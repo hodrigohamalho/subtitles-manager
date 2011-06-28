@@ -17,7 +17,6 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import br.com.jspace.core.Operations;
 import br.com.jspace.core.SubtitlesManager;
 
 
@@ -72,7 +71,7 @@ public class CommonsFileUploadServlet extends HttpServlet {
 		}
 		
 		try {
-			legend = subTitle.convertFile("/subtitle/legenda.srt", Operations.SUM, 2);
+			legend = subTitle.convertFile("/subtitle/legenda.srt", 2);
 			
 		} catch (ParseException e) {
 			System.out.println("Catch! =/");

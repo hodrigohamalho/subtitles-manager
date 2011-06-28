@@ -16,11 +16,11 @@ import java.util.regex.Pattern;
 
 public class SubtitlesManager {
 
-	public String convertFile(String path, Operations operator, int amount) throws IOException, ParseException{
+	public String convertFile(String path, int amount) throws IOException, ParseException{
 		String text = this.readFile(path);
 		List<String> timesString = this.extractTimes(text);
 		List<Date> times = this.convertStringToTime(timesString);
-		List<String> newTimes = this.addOrSubTime(times, operator, amount);
+		List<String> newTimes = this.addOrSubTime(times, amount);
 
 		for (int i=0; i < newTimes.size(); i ++) {
 			text = text.replace(timesString.get(i), newTimes.get(i).replace(":", "#k#"));
@@ -87,18 +87,14 @@ public class SubtitlesManager {
 		return dates;
 	}
 
-	public List<String> addOrSubTime(List<Date> times,Operations operator, int amount){
+	public List<String> addOrSubTime(List<Date> times, int amount){
 		List<String> newTime = new ArrayList<String>();
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 
 		for (Date time : times) {
 			calendar.setTime(time);
-			if (operator.equals(Operations.SUM)){
-				calendar.add(Calendar.SECOND, amount);
-			}else{
-				calendar.add(Calendar.SECOND, -amount);
-			}
+			calendar.add(Calendar.SECOND, amount);
 			newTime.add(format.format(calendar.getTime()));
 		}
 		return newTime;

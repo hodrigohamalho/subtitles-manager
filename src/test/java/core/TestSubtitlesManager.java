@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import br.com.jspace.core.Operations;
 import br.com.jspace.core.SubtitlesManager;
 
 
@@ -53,7 +52,7 @@ public class TestSubtitlesManager {
 		List<String> times = manager.extractTimes(text);
 		List<Date> datas = manager.convertStringToTime(times);
 
-		List<String> newTimes = manager.addOrSubTime(datas, Operations.SUM, 10);
+		List<String> newTimes = manager.addOrSubTime(datas, 10);
 		assertFalse(newTimes.isEmpty());
 		assertEquals("00:00:11", newTimes.get(0));
 		assertEquals("02:28:27", newTimes.get(newTimes.size()-1));
@@ -65,7 +64,7 @@ public class TestSubtitlesManager {
 		List<String> times = manager.extractTimes(text);
 		List<Date> datas = manager.convertStringToTime(times);
 
-		List<String> newTimes = manager.addOrSubTime(datas, Operations.SUB, -1);
+		List<String> newTimes = manager.addOrSubTime(datas, -1);
 		assertFalse(newTimes.isEmpty());
 		assertEquals("00:00:00", newTimes.get(0));
 		assertEquals("02:28:16", newTimes.get(newTimes.size()-1));
@@ -73,7 +72,7 @@ public class TestSubtitlesManager {
 	
 	@Test
 	public void convertFile() throws IOException, ParseException{
-		String fileName = manager.convertFile(path, Operations.SUM, 10);
+		String fileName = manager.convertFile(path, 10);
 		assertEquals("refined-inception-1080p.srt", fileName);
 	}
 }
