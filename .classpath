@@ -6,19 +6,19 @@
   <classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
   <classpathentry kind="var" path="M2_REPO/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2.jar" sourcepath="M2_REPO/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/rodrigo/.m2/repository/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/Users/rodrigoramalho/.m2/repository/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/commons-io/commons-io/2.0.1/commons-io-2.0.1.jar" sourcepath="M2_REPO/commons-io/commons-io/2.0.1/commons-io-2.0.1-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/rodrigo/.m2/repository/commons-io/commons-io/2.0.1/commons-io-2.0.1-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/Users/rodrigoramalho/.m2/repository/commons-io/commons-io/2.0.1/commons-io-2.0.1-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
   <classpathentry kind="var" path="M2_REPO/javax/javaee-api/6.0/javaee-api-6.0.jar"/>
   <classpathentry kind="var" path="M2_REPO/junit/junit/4.8.2/junit-4.8.2.jar" sourcepath="M2_REPO/junit/junit/4.8.2/junit-4.8.2-sources.jar">
     <attributes>
-      <attribute value="jar:file:/home/rodrigo/.m2/repository/junit/junit/4.8.2/junit-4.8.2-javadoc.jar!/" name="javadoc_location"/>
+      <attribute value="jar:file:/Users/rodrigoramalho/.m2/repository/junit/junit/4.8.2/junit-4.8.2-javadoc.jar!/" name="javadoc_location"/>
     </attributes>
   </classpathentry>
-  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 </classpath>

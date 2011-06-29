@@ -1,7 +1,9 @@
 package br.com.jspace.core;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.RandomAccessFile;
@@ -27,11 +29,10 @@ public class SubtitlesManager {
 		}
 
 		text = text.replaceAll("#k#", ":");
-		String fileName = path.substring(path.lastIndexOf(File.separator)+1);
-		this.writeFile(fileName, text);
-//		BufferedWriter out = new BufferedWriter(new FileWriter(fileName));
-//		out.write(text);
-//		out.close();
+		String fileName = path.substring(path.lastIndexOf("/")+1);
+		BufferedWriter out = new BufferedWriter(new FileWriter(path));
+		out.write(text);
+		out.close();
 
 		return fileName;
 	}

@@ -27,7 +27,7 @@
 			
 			<form action="upload.do" enctype="multipart/form-data" method="POST">
 				<div id="upload">
-					Escolha a Legenda: <input type="file" name="legenda" accept="text/plain" />
+					Escolha a Legenda: <input type="file" name="legenda" />
 				</div>
 				<div id="time">
 					Tempo a ser acrescido ou subtraido da legenda: <input type="text" name="segundos" id="segundos" value="0" size="2"/> <em>Segundos</em>

@@ -10,9 +10,7 @@
 <center>
 	<h1>SubTitles Manager</h1>
 	
-	<a href="#">Download</a>
-
-
+	<a href="<%=request.getContextPath() %>/subtitles/<%=request.getAttribute("downloadPath") %>">Download</a>
 
 </center>
 </body>
